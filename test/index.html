@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>RBO</title>
+		<style>
+		</style>
+	</head>
+	<body>
+		<script>
+
+(function() {
+
+var State = function(p){
+
+	this.p = p;
+	this.depth = 0, 
+	this.overlap = 0,
+	this.rbo = 0,
+	this.wgt = (1 - p) / p,
+	this.shortDepth = -1,
+	this.shortOverlap = -1,
+	this.seen = [],
+	this.rbo = 0
+};
+
+State.prototype.calculate = function (s, t){
+
+	if (t.length < s.length){
+		var _t = s;
+		s = t;
+		t = _t;
+	}
+
+	for (var i = 0, l = s.length; i < l; i++){
+		this.update(s[i], t[i]);
+	}
+
+	this.endShort();
+
+	if (t.length > s.length){
+		for (var n = s.length, k = t.length; n < k; n++){
+			this.updateUneven(t[n]);
+		}
+	}
+
+	return this.calcExtrapolated();
+};
+
+State.prototype.update = function(e1, e2){
+
+	e1 = e1.charCodeAt();
+	e2 = e2.charCodeAt();
+
+	if (this.shortDepth != -1){
+		console.log("RBO: update() called after EndShort()");
+		return false;
+	}
+
+	if (e1 == e2){
+		this.overlap++;
+	}
+	else {
+			if (this.seen[e1]) {
+				this.seen[e1] = false;
+				this.overlap++;
+			}
+			else {
+				this.seen[e1] = true;
+			}
+
+			if(this.seen[e2]){
+				this.seen[e2] = false;
+				this.overlap++;
+			} 
+			else {
+			this.seen[e2] = true;
+			}
+		}
+
+	this.depth++
+	this.wgt *= this.p;
+	this.rbo += (this.overlap / this.depth) * this.wgt;
+};
+
+State.prototype.endShort = function() {
+	this.shortDepth = this.depth;
+	this.shortOverlap = this.overlap;
+};
+
+State.prototype.updateUneven = function(e){
+	if (this.shortDepth == -1) {
+		console.log("rbo: UpdateUneven() called without EndShort()");
+		return false;
+	}
+
+	if (this.seen[e]) {
+		this.overlap++;
+		this.seen[e] = false;
+	}
+
+	this.depth++;
+	this.wgt *= this.p;
+
+	this.rbo += (this.overlap / this.depth) * this.wgt;
+	this.rbo += ((this.shortOverlap*(this.depth-this.shortDepth)) / (this.depth*this.shortDepth)) * this.wgt;
+
+};
+
+State.prototype.calcExtrapolated = function(){
+	pl = Math.pow(this.p, this.depth);
+
+	if (this.shortDepth == -1) {
+		this.endShort();
+	}
+
+	return this.rbo + ((this.overlap-this.shortOverlap)/(this.depth)+((this.shortOverlap)/(this.shortDepth)))*pl;
+
+};
+
+var s = new State(0.8);
+console.log(s.calculate(['a', 'b', 'c', 'd', 'e'],['b', 'a', 'g', 'h', 'e', 'k', 'l', 'c']));
+
+
+})();
+
+
+
+</script>
+</body>
+</html>
