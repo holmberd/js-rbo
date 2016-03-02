@@ -13,4 +13,5 @@ Sorts a JSON string list, in descending order, based on the number of times they
 
 #License
 
-Distributed under the MIT license.
+Free to use and abuse under the MIT license.
+http://www.opensource.org/licenses/mit-license.php
