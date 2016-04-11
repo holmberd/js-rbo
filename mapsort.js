@@ -10,7 +10,7 @@ var Sort = function() {
 };
 
 /**
- * sortes JSON items after number of times they occur 
+ * sorts JSON items after number of times they occur 
  * @param  {json}
  * @return {map(string, number)}
  */
