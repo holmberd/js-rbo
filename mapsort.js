@@ -10,7 +10,7 @@ var Sort = function() {
 };
 
 /**
- * sortes the genres and the number of times they occur 
+ * sortes JSON items after number of times they occur 
  * @param  {json}
  * @return {map(string, number)}
  */
@@ -71,4 +71,28 @@ Sort.prototype.sortDesc = function(a){
 	}
 	return a;
 };
+
+/* Alternative fn Map()
+
+function Map() {
+    var data = {};
+    // Set Function
+    this.set = function(key,value) {
+        data[key] = value;
+    };
+    // Get Function
+    this.get = function(key) {
+        return data[key];
+    };
+    this.has = function(key){
+        return !!data[key];  
+    };
+    this.myForEach = function(arr){
+        for (var i = 0, l = Object.keys(data).length; i < l; i++){
+            arr.push([Object.keys(data)[i], data[Object.keys(data)[i]]]);
+        }
+    };
+}
+
+*/
 
