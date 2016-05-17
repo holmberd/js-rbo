@@ -2,15 +2,17 @@
 
 An implementation of Rank-Biased Overlap in JavaScript
 
-
-RBO: Object Constructor holding the RBO-state calculation
 ```
+RBO: Object Constructor holding the RBO-state calculation
+
 @param  {number} degree of top-weightedness of the RBO metric
 
 Example: var rbo = new RBO(0.8);
 ```
-RBO.calculate: Calculates similarity RBO
+
 ```
+RBO.calculate: Calculates similarity RBO
+
 @param  {array, array} sorted ranked list arrays
 @return {function} extrapolated calculation
  		--> @return similarity RBO scores achieved
