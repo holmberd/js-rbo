@@ -12,7 +12,8 @@ An implementation of Rank-Biased Overlap in JavaScript
  * @return {function} extrapolated calculation
  * 		--> @return similarity RBO scores achieved
  ex: rbo.calculate(['a', 'b', 'c', 'd', 'e'],['b', 'a', 'g', 'h', 'e', 'k', 'l', 'c']));
- 
+```
+
 # mapsort
 
 Sorts a JSON string list, in descending order, based on the number of times they occur.
