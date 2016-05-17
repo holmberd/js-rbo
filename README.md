@@ -3,7 +3,6 @@
 An implementation of Rank-Biased Overlap in JavaScript
 
 
-
 RBO: Object Constructor holding the RBO-state calculation
 ```
 @param  {number} degree of top-weightedness of the RBO metric
