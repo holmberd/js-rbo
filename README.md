@@ -7,7 +7,7 @@ RBO: Object Constructor holding the RBO-state calculation
 ```
 @param  {number} degree of top-weightedness of the RBO metric
 
-ex: var rbo = new RBO(0.8);
+Example: var rbo = new RBO(0.8);
 ```
 RBO.calculate: Calculates similarity RBO
 ```
@@ -15,7 +15,7 @@ RBO.calculate: Calculates similarity RBO
 @return {function} extrapolated calculation
  		--> @return similarity RBO scores achieved
  		
-ex: rbo.calculate(['a', 'b', 'c', 'd', 'e'],['b', 'a', 'g', 'h', 'e', 'k', 'l', 'c']));
+Example: rbo.calculate(['a', 'b', 'c', 'd', 'e'],['b', 'a', 'g', 'h', 'e', 'k', 'l', 'c']));
 ```
 
 # mapsort
