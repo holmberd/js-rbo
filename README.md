@@ -1,6 +1,4 @@
-# rbo
-
-An implementation of Rank-Biased Overlap in JavaScript
+##rbo - An implementation of Rank-Biased Overlap in JavaScript
 
 _RBO: Object Constructor holding the RBO-state calculation_:
 ```
@@ -16,9 +14,7 @@ _RBO.calculate: Calculates similarity RBO_:
 ```
 Example: `rbo.calculate(['a', 'b', 'c', 'd', 'e'],['b', 'a', 'g', 'h', 'e', 'k', 'l', 'c']));`
 
-# mapsort
-
-Sorts a JSON string list, in descending order, based on the number of times they occur.
+## mapSort - Sorts a JSON string list, in descending order, based on the number of times they occur.
 ```
 @param: JSON.items[string]
 @return: Map(key,value)
