@@ -20,7 +20,7 @@ Example: `rbo.calculate(['a', 'b', 'c', 'd', 'e'],['b', 'a', 'g', 'h', 'e', 'k',
 @return: Map(key,value)
 ```
 
-#License
+##License
 
 Free to use and abuse under the MIT license.
 http://www.opensource.org/licenses/mit-license.php
