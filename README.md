@@ -14,7 +14,7 @@ _RBO.calculate: Calculates similarity RBO_:
 ```
 Example: `rbo.calculate(['a', 'b', 'c', 'd', 'e'],['b', 'a', 'g', 'h', 'e', 'k', 'l', 'c']));`
 
-## mapSort - Sorts a JSON string list, in descending order, based on the number of times they occur.
+## mapsort - Sorts a JSON string list, in descending order, based on the number of times they occur.
 ```
 @param: JSON.items[string]
 @return: Map(key,value)
