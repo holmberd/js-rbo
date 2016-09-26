@@ -17,28 +17,29 @@
  */
 
 /**
- * Object Constructor holding the RBO-state calculation
- * @param  {number} degree of top-weightedness of the RBO metric
+ * Object Constructor creates a new RBO state calculation
+ * @constructor
+ * @param  {number} degree (0..1) of top-weightedness of the RBO metric
  */
-var RBO = function(p){
+var RBO = function (p) {
 
-	this.p = p,
-	this.rbo = 0,
-	this.depth = 0, 
-	this.overlap = 0,
-	this.shortDepth = -1,
-	this.seen = new Map(),
-	this.wgt = (1 - p) / p,
-	this.shortOverlap = -1
+	this.p = p;
+	this.rbo = 0;
+	this.depth = 0; 
+	this.overlap = 0;
+	this.shortDepth = -1;
+	this.seen = new Map();
+	this.wgt = (1 - p) / p;
+	this.shortOverlap = -1;
 };
 
 /**
  * Calculates similarity RBO 
+ * @function calculate
  * @param  {array, array} sorted ranked list arrays
  * @return {function} extrapolated calculation
- * 		--> @return similarity RBO scores achieved
  */
-RBO.prototype.calculate = function (s, t){
+RBO.prototype.calculate = function (s, t) {
 
 	if (t.length < s.length){
 		var _t = s;
@@ -53,8 +54,8 @@ RBO.prototype.calculate = function (s, t){
 	this.endShort();
 
 	if (t.length > s.length){
-		for (var i = s.length, l = t.length; i < l; i++){
-			this.updateUneven(t[i]);
+		for (var n = s.length, le = t.length; n < le; n++){
+			this.updateUneven(t[n]);
 		}
 	}
 
@@ -63,24 +64,25 @@ RBO.prototype.calculate = function (s, t){
 
 /**
  * Calculates the estimate beyond the original observation range
+ * @function calcExtrapolated
  * @return similarity RBO scores achieved
  */
-RBO.prototype.calcExtrapolated = function(){
-	pl = Math.pow(this.p, this.depth);
+RBO.prototype.calcExtrapolated = function () {
+	var pl = Math.pow(this.p, this.depth);
 
 	if (this.shortDepth == -1) {
 		this.endShort();
 	}
 
 	return this.rbo + ((this.overlap-this.shortOverlap)/(this.depth)+((this.shortOverlap)/(this.shortDepth)))*pl;
-
 };
 
 /**
  * Adds elements from the two lists to our state calculation
+ * @function RBO.prototype.update
  * @param  {element, element} 
  */
-RBO.prototype.update = function(e1, e2){
+RBO.prototype.update = function (e1, e2) {
 
 	if (s.shortDepth != -1){
 		console.log("RBO: update() called after EndShort()");
@@ -108,22 +110,26 @@ RBO.prototype.update = function(e1, e2){
 			}
 		}
 
-	this.depth++
+	this.depth++;
 	this.wgt *= this.p;
 	this.rbo += (this.overlap / this.depth) * this.wgt;
 };
 
-// EndShort indicates the end of the shorter of the two lists has been reached
-RBO.prototype.endShort = function() {
+/**
+* Indicates the end of the shorter of the two lists has been reached
+* @function endShort
+*/
+RBO.prototype.endShort = function () {
 	this.shortDepth = this.depth;
 	this.shortOverlap = this.overlap;
 };
 
 /**
- * UpdateUneven adds elements from the longer list to the state calculation
+ * Adds elements from the longer list to the state calculation
+ * @function UpdateUneven
  * @param  {element} 
  */
-RBO.prototype.updateUneven = function(e){
+RBO.prototype.updateUneven = function (e) {
 	if (this.shortDepth == -1) {
 		console.log("RBO: UpdateUneven() called without EndShort()");
 		return false;
@@ -141,3 +147,5 @@ RBO.prototype.updateUneven = function(e){
 	this.rbo += ((this.shortOverlap*(this.depth-this.shortDepth)) / (this.depth*this.shortDepth)) * this.wgt;
 
 };
+
+module.exports = RBO;
