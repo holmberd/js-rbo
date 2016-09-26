@@ -1,17 +1,26 @@
-# rbo
+##RBO - An implementation of Rank-Biased Overlap in JavaScript
 
-An implementation of Rank-Biased Overlap in JavaScript
+_RBO: Object Constructor creates a new RBO state calculation_:
+```
+@constructor
+@param  {number} degree (0..1) of top-weightedness of the RBO metric
+```
+Example: `var rbo = new RBO(0.8);`
 
+_RBO.calculate: Calculates similarity RBO_:
+```
+@param  {array, array} sorted ranked list arrays
+@return similarity RBO scores achieved
+```
+Example: `rbo.calculate(['a', 'b', 'c', 'd', 'e'],['b', 'a', 'g', 'h', 'e', 'k', 'l', 'c']));`
 
-# mapsort
-
-Sorts a JSON string list, in descending order, based on the number of times they occur.
+## mapsort - Sorts a JSON string list, in descending order, based on the number of times they occur.
 ```
 @param: JSON.items[string]
 @return: Map(key,value)
 ```
 
-#License
+##License
 
 Free to use and abuse under the MIT license.
 http://www.opensource.org/licenses/mit-license.php
