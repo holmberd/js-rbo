@@ -65,7 +65,7 @@ RBO.prototype.calculate = function (s, t) {
 /**
  * Calculates the estimate beyond the original observation range
  * @function calcExtrapolated
- * @return similarity RBO scores achieved
+ * @return {number} similarity RBO scores achieved
  */
 RBO.prototype.calcExtrapolated = function () {
 	var pl = Math.pow(this.p, this.depth);
