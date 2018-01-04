@@ -1,4 +1,4 @@
-##rbo - An implementation of Rank-Biased Overlap in JavaScript
+## RBO - An implementation of Rank-Biased Overlap in JavaScript
 
 _RBO: Object Constructor holding the RBO-state calculation_:
 ```
@@ -14,7 +14,7 @@ _RBO.calculate: Calculates similarity RBO_:
 ```
 Example: `rbo.calculate(['a', 'b', 'c', 'd', 'e'],['b', 'a', 'g', 'h', 'e', 'k', 'l', 'c']));`
 
-##License
+## License
 
 Free to use and abuse under the MIT license.
 http://www.opensource.org/licenses/mit-license.php
