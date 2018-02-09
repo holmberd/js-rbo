@@ -1,0 +1,32 @@
+{
+  "author": {
+    "name": "Dag Holmberg"
+  },
+  "bugs": {
+    "url": "https://github.com/holmberd/js-rbo/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Implementation of Rank-Biased Overlap in JavaScript",
+  "homepage": "https://github.com/holmberd/js-rbo#readme",
+  "keywords": [
+    "rank",
+    "biased",
+    "overlap",
+    "math",
+    "top",
+    "weightedness",
+    "lists"
+  ],
+  "license": "ISC",
+  "main": "rbo.js",
+  "name": "rbo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holmberd/js-rbo.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
