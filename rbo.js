@@ -84,7 +84,7 @@ RBO.prototype.calcExtrapolated = function () {
  */
 RBO.prototype.update = function (e1, e2) {
 
-	if (s.shortDepth != -1){
+	if (this.shortDepth != -1){
 		console.log("RBO: update() called after EndShort()");
 		return false;
 	}
