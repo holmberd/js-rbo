@@ -1,4 +1,5 @@
 ## RBO - An implementation of Rank-Biased Overlap in JavaScript
+It consists in measuring the overlap between the two lists at each position, while introducing a bias based on the rank so that a difference further in the lists is less important than at the top.
 
 #### RBO: Object Constructor holding the RBO-state calculation:
 
