@@ -14,10 +14,10 @@ const result = rbo.calculate(listA, listB); // returns the similarity score achi
 
 ## Helpers
 
-### calcWeight()
+### calcWeight(p, d)
 Calculates the weight of first `d` rankings with parameter `p` to help inform the choice of the parameter `p`.
 ```js
 const p = 0.9; // degree (0..1) of top-weightedness of the RBO metric
 const d = 10; // ranking
-rbo.calcWeight(0.9, 10);
+const pWeight = rbo.calcWeight(p, d);
 ```
