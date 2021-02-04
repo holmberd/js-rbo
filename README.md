@@ -1,37 +1,23 @@
-## RBO - An implementation of Rank-Biased Overlap in JavaScript
-It consists in measuring the overlap between the two lists at each position, while introducing a bias based on the rank so that a difference further in the lists is less important than at the top.
+# RBO - Rank-Biased Overlap
+Measures the overlap between the two lists at each position, while introducing a bias based on the rank so that a difference further in the lists is less important than at the top.
 
-#### RBO: Object Constructor holding the RBO-state calculation:
+## Example
+```js
+const p = 0.8; // degree (0..1) of top-weightedness of the RBO metric
+const rbo = new RBO(p);
 
-```javascript
-@constructor
-@param {number} p - degree (0..1) of top-weightedness of the RBO metric
+const listA = ['a', 'b', 'c', 'd', 'e']; // sorted ranked list
+const listB = ['b', 'a', 'g', 'h', 'e', 'k', 'l', 'c'];
+
+const result = rbo.calculate(listA, listB); // returns the similarity score achieved
 ```
-Example: `var rbo = new RBO(0.8);`
 
-#### RBO.calculate: Calculates similarity RBO:
+## Helpers
 
-```javascript
-@function
-@param {Array} s -  sorted ranked list
-@param {Array} t - sorted ranked list
-@return {number} similarity RBO scores achieved
+### calcWeight()
+Calculates the weight of first `d` rankings with parameter `p` to help inform the choice of the parameter `p`.
+```js
+const p = 0.9; // degree (0..1) of top-weightedness of the RBO metric
+const d = 10; // ranking
+rbo.calcWeight(0.9, 10);
 ```
-Example: `rbo.calculate(['a', 'b', 'c', 'd', 'e'],['b', 'a', 'g', 'h', 'e', 'k', 'l', 'c']);`
-
-#### RBO.calcWeight: Calculates the weight of first d rankings with parameter p
-
-```javascript
-@function calcWeight
-@static
-@param {number} p - degree (0..1) of top-weightedness of the RBO metric
-@param {number} d - ranking
-```
-Example:
-`RBO.calcWeight(0.9, 10);`
-`helps inform the choice of the parameter p`
-
-## License
-
-Free to use and abuse under the MIT license.
-http://www.opensource.org/licenses/mit-license.php
